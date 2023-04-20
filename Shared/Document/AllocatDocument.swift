@@ -13,9 +13,9 @@ import UniformTypeIdentifiers
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 extension HighContext: ObservableObject {}
@@ -24,14 +24,14 @@ struct AllocatDocument {
     var model: BaseModel
     var modelSettings: ModelSettings // requiring context reset
     var displaySettings: DisplaySettings // NOT requiring context reset
-    
+
     @ObservedObject var context: HighContext
     @ObservedObject var optimize: OptimizeState
-    
+
     var allocationResult: HighResult
     var allocationTable: HighStrategyTable
     var assetColorMap: AssetColorMap
-    
+
     // schemas to package/unpackage
     static var schemas: [AllocSchema] = [
         .allocStrategy,
@@ -44,13 +44,13 @@ struct AllocatDocument {
         .allocCap,
         .allocTracker,
     ]
-    
+
     init() {
         let _model = BaseModel.getDefaultModel()
         let _modelSettings = ModelSettings()
         let _context = HighContext(_model,
-                                    _modelSettings,
-                                    strategyKey: MStrategy.emptyKey)
+                                   _modelSettings,
+                                   strategyKey: MStrategy.emptyKey)
 
         model = _model
         modelSettings = _modelSettings
@@ -68,20 +68,19 @@ extension UTType {
 }
 
 extension AllocatDocument: FileDocument {
-    
     static var readableContentTypes: [UTType] { [.allocatDocument] }
     static var writableContentTypes: [UTType] { [.allocatDocument] }
-    
+
     init(configuration: ReadConfiguration) throws {
         guard let data = configuration.file.regularFileContents else {
             throw CocoaError(.fileReadCorruptFile)
         }
-        
+
         let _model = BaseModel()
         let _modelSettings = ModelSettings()
         let _context = HighContext(_model,
-                                    _modelSettings,
-                                    strategyKey: MStrategy.emptyKey)
+                                   _modelSettings,
+                                   strategyKey: MStrategy.emptyKey)
 
         model = _model
         modelSettings = _modelSettings
@@ -91,18 +90,17 @@ extension AllocatDocument: FileDocument {
         allocationTable = HighStrategyTable.create()
         assetColorMap = AssetColorMap()
         optimize = OptimizeState()
-        
+
         try model.unpackage(data: data,
                             schemas: AllocatDocument.schemas,
                             modelSettings: &modelSettings,
                             displaySettings: &displaySettings)
     }
-    
-    func fileWrapper(configuration config: WriteConfiguration) throws -> FileWrapper {
+
+    func fileWrapper(configuration _: WriteConfiguration) throws -> FileWrapper {
         let data = try model.package(schemas: AllocatDocument.schemas,
                                      modelSettings: modelSettings,
                                      displaySettings: displaySettings)
         return .init(regularFileWithContents: data)
     }
-
 }

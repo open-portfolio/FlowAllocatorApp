@@ -8,18 +8,16 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 struct PrimaryStrategy: View {
-    
     @Binding var document: AllocatDocument
     var strategy: MStrategy
     var canShowGrid: Bool
@@ -39,25 +37,25 @@ struct PrimaryStrategy: View {
                         .padding(.bottom)
                 }
             } else {
-                WelcomeView() {
+                WelcomeView {
                     GettingStarted(document: $document)
                 }
                 .padding()
             }
         }
     }
-    
+
     // MARK: - Helpers
 
     private var ax: HighContext {
         document.context
     }
-    
+
     private var invalidStrategyDesc: String? {
         do {
             try strategy.validateDeep(against: ax)
             try MSecurity.validateDeep(against: ax)
-        
+
         } catch let error as FlowBaseError {
             return error.description
         } catch {
@@ -66,4 +64,3 @@ struct PrimaryStrategy: View {
         return nil
     }
 }
-

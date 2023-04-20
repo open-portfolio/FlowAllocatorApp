@@ -8,7 +8,6 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import SwiftUI
 
 struct CurrencyCodePicker<Label>: View where Label: View {

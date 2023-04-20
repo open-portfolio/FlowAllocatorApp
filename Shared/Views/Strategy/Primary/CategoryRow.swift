@@ -10,9 +10,9 @@
 
 import SwiftUI
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 
 import AllocData
 

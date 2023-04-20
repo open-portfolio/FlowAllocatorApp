@@ -8,15 +8,14 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import SwiftUI
 import UniformTypeIdentifiers
 
+import AllocData
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
-import AllocData
 
 extension Text {
     func platformFont() -> Text {
@@ -41,7 +40,7 @@ struct StrategyCell: View {
         case variable
         case fixedHeader
         case fixed
-        
+
         var description: String {
             switch self {
             case .rowTotal:
@@ -91,7 +90,6 @@ struct StrategyCell: View {
 
     @ViewBuilder
     private func formattedValue(_ alloc: AssetValue) -> some View {
-        
         switch moneySelection {
         case .percentOfAccount:
             PercentLabel(value: alloc.value, ifZero: "")
@@ -136,7 +134,7 @@ struct StrategyCell: View {
     private var ifZeroX: String? {
         cellType != .rowTotal ? "" : nil
     }
-    
+
     private var ax: HighContext {
         document.context
     }
@@ -247,7 +245,7 @@ struct StrategyCell: View {
         }
         return document.model.makeAssetMap()
     }
-    
+
     private func getAssetClassTitle(_ assetKey: AssetKey) -> String {
         assetMap[assetKey]?.title ?? assetKey.assetNormID.capitalized
     }

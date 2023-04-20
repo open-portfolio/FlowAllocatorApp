@@ -12,9 +12,9 @@ import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 enum TabsAccountTable: Int {
@@ -122,12 +122,11 @@ struct PrimaryAccount: View {
     }
 
     private var holdingsSummaryMap: AssetHoldingsSummaryMap {
-        
         // if no valid strategy available in the context, just show raw holdings by asset class
         guard ax.strategyKey.isValid else {
             return ax.rawAccountAssetHoldingsSummaryMap[accountKey] ?? [:]
         }
-        
+
         if account.canTrade {
             return ax.mergedVariableAccountHoldingsSummaryMap[accountKey] ?? [:]
         } else {
@@ -144,14 +143,12 @@ struct PrimaryAccount: View {
     }
 
     private func getTickerMap(isBase: Bool) -> AssetTickerHoldingsSummaryMap {
-        
         let map: AssetHoldingsMap? = {
-            
             // if no valid strategy available in the context, just show ticker data by asset class
             guard ax.strategyKey.isValid else {
                 return ax.rawAccountAssetHoldingsMap[accountKey]
             }
-                
+
             if isBase {
                 return ax.baseAccountAssetHoldingsMap[accountKey]
             } else {
@@ -174,8 +171,8 @@ struct PrimaryAccount: View {
 
     private var netRebalanceMap: RebalanceMap {
         ax.isReduceRebalance
-        ? applyReducerMap(baseRebalanceMap, reducerMap, preserveZero: false)
-        : baseRebalanceMap
+            ? applyReducerMap(baseRebalanceMap, reducerMap, preserveZero: false)
+            : baseRebalanceMap
     }
 
     private var accountSalesMap: AccountSalesMap {
@@ -206,8 +203,7 @@ struct PrimaryAccount: View {
         }
     }
 
-    private func tabChangedAction(newValue: TabsAccountTable) {
-
+    private func tabChangedAction(newValue _: TabsAccountTable) {
         switch tab {
         case .holdings:
             subtitle = "Holdings"

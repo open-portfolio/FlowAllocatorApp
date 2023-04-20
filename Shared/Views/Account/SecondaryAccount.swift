@@ -12,9 +12,9 @@ import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 enum TabsAccount: Int {
@@ -29,7 +29,7 @@ enum TabsAccount: Int {
 
 struct SecondaryAccount: View {
     @AppStorage(TabsAccount.storageKey) var tab: TabsAccount = .defaultTab
-    
+
     @Binding var document: AllocatDocument
 
     // MARK: - Parameters

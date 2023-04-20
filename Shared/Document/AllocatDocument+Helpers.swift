@@ -12,25 +12,24 @@ import Foundation
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 
 extension AllocatDocument {
-    
     // MARK: - Active Strategy/Accounts Helpers
-    
+
     var activeStrategyKey: StrategyKey {
         modelSettings.activeStrategyKey
     }
-    
+
     /// returns nil if no active strategy
     var activeStrategy: MStrategy? {
         guard activeStrategyKey.isValid
         else { return nil }
         return context.strategyMap[activeStrategyKey]
     }
-    
+
     /// returns [] if no active strategy or no accounts assigned to strategy
     var activeAccounts: [MAccount] {
         model.getActiveAccounts(strategyKey: activeStrategyKey)
@@ -40,7 +39,7 @@ extension AllocatDocument {
     var activeAccountKeys: [AccountKey] {
         activeAccounts.map(\.primaryKey)
     }
-    
+
     // MARK: - helpers for formatted results
 
     // Recent sales in this asset class that realized a loss in a taxable account.

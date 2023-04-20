@@ -13,21 +13,21 @@ import SwiftUI
 import FlowUI
 
 #if os(macOS)
-let strategyRollupColor = Color(.controlTextColor)
+    let strategyRollupColor = Color(.controlTextColor)
 #else
-let strategyRollupColor = Color.primary
+    let strategyRollupColor = Color.primary
 #endif
 
 #if os(macOS)
-let strategyGroupRelatedColor = Color(.controlTextColor)
+    let strategyGroupRelatedColor = Color(.controlTextColor)
 #else
-let strategyGroupRelatedColor = Color.primary
+    let strategyGroupRelatedColor = Color.primary
 #endif
 
 #if os(macOS)
-let strategyReduceRebalanceColor = Color(.controlTextColor)
+    let strategyReduceRebalanceColor = Color(.controlTextColor)
 #else
-let strategyReduceRebalanceColor = Color.primary
+    let strategyReduceRebalanceColor = Color.primary
 #endif
 
 struct ConsolidationToggles: View {
@@ -56,9 +56,9 @@ struct ConsolidationToggles: View {
 
     private var controlTextColor: Color {
         #if os(macOS)
-        Color(.controlTextColor)
+            Color(.controlTextColor)
         #else
-        Color.primary
+            Color.primary
         #endif
     }
 }

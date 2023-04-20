@@ -8,14 +8,13 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 
 struct RebalanceLiquidateCell: View {
     @Binding var document: AllocatDocument
@@ -58,7 +57,7 @@ struct RebalanceLiquidateCell: View {
             }
         }
     }
-    
+
     // MARK: - Properties
 
     private var ax: HighContext {

@@ -12,9 +12,9 @@ import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 struct CategoryTitleHeader: View {
@@ -57,19 +57,19 @@ struct CategoryTitleHeader: View {
     private var fill: some View {
         MyColor.getBackgroundFill(bg)
     }
-    
+
     private var accountFill: AnyView {
         MyColor.getBackgroundFill(bg.opacity(0.5))
     }
-    
+
     private var controlTextColor: Color {
         #if os(macOS)
-        Color(.controlTextColor)
+            Color(.controlTextColor)
         #else
-        Color.primary
+            Color.primary
         #endif
     }
-    
+
     private var formattedValue: String {
         switch document.displaySettings.strategyMoneySelection {
         case .percentOfAccount, .percentOfStrategy:

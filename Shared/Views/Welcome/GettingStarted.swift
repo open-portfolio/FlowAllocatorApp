@@ -10,10 +10,10 @@
 
 import SwiftUI
 
-import FlowAllocHigh
-import FlowUI
-import FlowBase
 import AllocData
+import FlowAllocHigh
+import FlowBase
+import FlowUI
 
 struct GettingStarted: View {
     @Binding var document: AllocatDocument
@@ -35,7 +35,7 @@ struct GettingStarted: View {
                     .padding()
                 }
             }
-            
+
             if document.model.accounts.count == 0 {
                 HStack {
                     Text("Or if you just want to explore with fake data...")
@@ -48,7 +48,7 @@ struct GettingStarted: View {
             }
         }
     }
-    
+
     private func myText(_ n: Int, _ suffix: String) -> some View {
         WelcomeNumberedLabel(n, fill: document.accentFill) { Text(suffix) }
     }

@@ -10,9 +10,9 @@
 
 import SwiftUI
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 
 struct AccountHeaderCell: View {
     @Binding var document: AllocatDocument
@@ -30,7 +30,6 @@ struct AccountHeaderCell: View {
     let keySeparator: Character = ":"
 
     var body: some View {
-
         VStack(alignment: .center, spacing: 2) {
             Text("\(item.account.title ?? item.account.accountID)")
                 .lineLimit(3)
@@ -58,12 +57,12 @@ struct AccountHeaderCell: View {
 
     private var controlTextColor: Color {
         #if os(macOS)
-        Color(.controlTextColor)
+            Color(.controlTextColor)
         #else
-        Color.primary
+            Color.primary
         #endif
     }
-    
+
     // MARK: - Helpers
 
     private var formattedValue: String {
@@ -116,7 +115,7 @@ struct AccountHeaderCell: View {
                let fromIdx = getKeyIndex(keyIdxStr)
             {
                 DispatchQueue.main.async {
-                    //print("from \(fromIdx) to \(item.account.accountID) \(accountIndex)")
+                    // print("from \(fromIdx) to \(item.account.accountID) \(accountIndex)")
                     let toIdx = accountIndex
                     guard fromIdx >= 0, toIdx >= 0, fromIdx != toIdx else { return }
 

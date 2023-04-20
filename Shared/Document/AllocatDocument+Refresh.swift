@@ -8,14 +8,13 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 // MARK: - Dependency-based refresh routines
@@ -34,7 +33,7 @@ extension AllocatDocument {
     // if you want to force the refresh context, set document.surgeContext.isValid = false
     mutating func refreshHighResult() {
         log.info("\(#function) ENTER"); defer { log.info("\(#function) EXIT") }
-        
+
         if !context.strategyKey.isValid {
             let strategyKey: StrategyKey = modelSettings.activeStrategyKey
             guard strategyKey.isValid
@@ -45,14 +44,14 @@ extension AllocatDocument {
             refreshContext(strategyKey: strategyKey)
             return
         }
-        
+
         do {
             let result = try HighResult.allocateRebalanceSummarize(context, displaySettings.params)
             allocationResult = result
 
             allocationTable = HighStrategyTable.create(context: context,
-                                                        params: displaySettings.params,
-                                                        accountAllocMap: result.accountAllocMap)
+                                                       params: displaySettings.params,
+                                                       accountAllocMap: result.accountAllocMap)
 
         } catch let error as AllocLowError2 {
             print(error.description)
@@ -71,16 +70,16 @@ extension AllocatDocument {
 
         let timestamp = Date()
         let ax = HighContext(model,
-                              modelSettings,
-                              strategyKey: strategyKey,
-                              timestamp: timestamp)
+                             modelSettings,
+                             strategyKey: strategyKey,
+                             timestamp: timestamp)
 
         // if fresh context, update the params to reflect the accounts, allocations, etc.
         displaySettings.params.update(nuAccountKeys: ax.variableAccountKeysForStrategy,
                                       nuAssetKeys: ax.allocatingAllocAssetKeys,
                                       nuFixedAccountKeys: ax.fixedAccountKeysForStrategy.sorted())
 
-        self.context = ax
+        context = ax
 
         refreshHighResult()
 

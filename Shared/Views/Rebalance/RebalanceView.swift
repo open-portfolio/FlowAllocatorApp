@@ -12,21 +12,21 @@ import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 struct RebalanceView: View {
     @AppStorage("RebalanceViewTab") var tab: String = ""
-    
+
     static let rebalanceSetupTabID = "608A0374-279D-42F9-BD80-F26E9B68CFE2"
 
     // MARK: - Parameters
 
     @Binding var document: AllocatDocument
     var strategy: MStrategy
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -43,11 +43,11 @@ struct RebalanceView: View {
             TabView(selection: $tab) {
                 ForEach(accounts, id: \.self) { account in
                     accountView(account)
-                    .tabItem { Text(account.title ?? "") }
-                    .tag(account.primaryKey.accountNormID)
-                    .padding(.horizontal)
+                        .tabItem { Text(account.title ?? "") }
+                        .tag(account.primaryKey.accountNormID)
+                        .padding(.horizontal)
                 }
-                
+
                 RebalanceSettings(minimumSaleAmount: $document.modelSettings.minimumSaleAmount,
                                   minimumPositionValue: $document.modelSettings.minimumPositionValue)
                     .tabItem { Text("Setup") }
@@ -69,7 +69,7 @@ struct RebalanceView: View {
             AccountRebalanceView(document: $document, account: account)
         }
     }
-    
+
     private var exportButton: some View {
         Button(action: exportAction) {
             Text("Export")
@@ -77,7 +77,7 @@ struct RebalanceView: View {
     }
 
     // MARK: - Helpers
-    
+
     private var ax: HighContext {
         document.context
     }
@@ -85,11 +85,11 @@ struct RebalanceView: View {
     private var ds: DisplaySettings {
         document.displaySettings
     }
-    
+
     private var ms: ModelSettings {
         document.modelSettings
     }
-    
+
     private var accountSalesMap: AccountSalesMap {
         document.allocationResult.getAccountSalesMap(ax)
     }
@@ -104,7 +104,7 @@ struct RebalanceView: View {
     }
 
     // MARK: - Actions
-    
+
     private func exportAction() {
         let tradingAllocations = MRebalanceAllocation.getAllocations(ax.variableAccountKeysForStrategy,
                                                                      ax.accountAllocatingValueMap,
@@ -118,14 +118,15 @@ struct RebalanceView: View {
                                                                         ax.assetMap)
         let mpurchases = MRebalancePurchase.getPurchases(accountPurchasesMap, ax.accountMap, ax.assetMap)
         let msales = MRebalanceSale.getSales(accountSalesMap)
-        
+
         if let data = try? packageRebalance(params: ds.params,
                                             tradingAllocations: tradingAllocations,
                                             nonTradingAllocations: nonTradingAllocations,
                                             mpurchases: mpurchases,
-                                            msales: msales) {
+                                            msales: msales)
+        {
             #if os(macOS)
-            NSSavePanel.saveData(data, name: "rebalance", ext: "zip", completion: { _ in })
+                NSSavePanel.saveData(data, name: "rebalance", ext: "zip", completion: { _ in })
             #endif
         }
     }

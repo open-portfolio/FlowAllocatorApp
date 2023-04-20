@@ -10,8 +10,8 @@
 
 import SwiftUI
 
-import FlowBase
 import FlowAllocHigh
+import FlowBase
 
 struct OptimizeSettings: View {
     @Binding var document: AllocatDocument

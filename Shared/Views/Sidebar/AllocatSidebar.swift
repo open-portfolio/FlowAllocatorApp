@@ -12,13 +12,12 @@ import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowBase
 import FlowUI
-import FlowAllocHigh
 import FlowViz
 
 struct AllocatSidebar<HS>: View where HS: View {
-    
     @Binding var document: AllocatDocument
     let strategiedHoldingsSummary: HS
     var isEmpty: Bool
@@ -33,12 +32,12 @@ struct AllocatSidebar<HS>: View where HS: View {
                 .scaleEffect(1.5)
                 .padding()
         }
-        
+
         Spacer()
     }
 
     // MARK: - Properties
-    
+
     private var ax: HighContext {
         document.context
     }

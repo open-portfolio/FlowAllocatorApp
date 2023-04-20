@@ -8,14 +8,13 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 struct ConsolidationView: View {
@@ -40,7 +39,7 @@ struct ConsolidationView: View {
                         Text("Enable Roll Up Assets")
                     }
                 })
-        
+
                 HStack {
                     Text("Threshold")
                     Picker(selection: $document.modelSettings.rollupThreshold, label: EmptyView()) {
@@ -48,7 +47,7 @@ struct ConsolidationView: View {
                             Text("\(n)%").tag(n)
                         }
                     }
-                            .pickerStyle(DefaultPickerStyle())
+                    .pickerStyle(DefaultPickerStyle())
                     .frame(maxWidth: 100)
                 }
                 .padding(.horizontal)

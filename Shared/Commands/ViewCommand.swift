@@ -39,7 +39,7 @@ struct ViewCommand: View {
         Divider()
 
         DataModelCommands(baseTableViewCommands: getBaseDataModelViewCommand(baseModelEntities),
-                      onSelect: { document?.displaySettings.activeSidebarMenuKey = $0 })
+                          onSelect: { document?.displaySettings.activeSidebarMenuKey = $0 })
     }
 
     @ViewBuilder
@@ -50,20 +50,20 @@ struct ViewCommand: View {
         }, label: {
             Text("All")
         })
-            .keyboardShortcut("0", modifiers: defaultEventModifier)
+        .keyboardShortcut("0", modifiers: defaultEventModifier)
 
         Button(action: {
             document?.displaySettings.activeSidebarMenuKey = SidebarMenuIDs.tradingAccountsSummary.rawValue
         }, label: {
             Text("Trading Accounts")
         })
-            .keyboardShortcut("t", modifiers: defaultEventModifier)
+        .keyboardShortcut("t", modifiers: defaultEventModifier)
 
         Button(action: {
             document?.displaySettings.activeSidebarMenuKey = SidebarMenuIDs.nonTradingAccountsSummary.rawValue
         }, label: {
             Text("Non-Trading Accounts")
         })
-            .keyboardShortcut("n", modifiers: defaultEventModifier)
+        .keyboardShortcut("n", modifiers: defaultEventModifier)
     }
 }

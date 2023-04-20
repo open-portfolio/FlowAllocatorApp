@@ -8,14 +8,13 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 struct StrategySummary: View {
@@ -25,63 +24,66 @@ struct StrategySummary: View {
     var body: some View {
         VStack {
             #if os(macOS)
-            if document.displaySettings.showSecondary {
-                HSplitView {
+                if document.displaySettings.showSecondary {
+                    HSplitView {
+                        primary
+                        secondary
+                    }
+                } else {
                     primary
-                    secondary
                 }
-            } else {
-                primary
-            }
             #else
-            primary
+                primary
             #endif
         }
         .toolbar {
             ToolbarItemGroup(placement: .principal) {
-                
-                shuffleButton   // NOTE: on iOS causing double navigation for undetermined reason
+                shuffleButton // NOTE: on iOS causing double navigation for undetermined reason
 
                 Spacer()
-                
+
                 viewControls
                     .disabled(!canShowGrid)
             }
             #if os(macOS)
-            ToolbarItemGroup(placement: .primaryAction) {
-                barControls
-            }
+                ToolbarItemGroup(placement: .primaryAction) {
+                    barControls
+                }
             #else
-            ToolbarItemGroup(placement: .automatic) {
-                NavigationLink(
-                    destination: AllocationTable(document: $document, strategy: strategy),
-                    label: {
-                        Text("Allocation")
-                    })
+                ToolbarItemGroup(placement: .automatic) {
+                    NavigationLink(
+                        destination: AllocationTable(document: $document, strategy: strategy),
+                        label: {
+                            Text("Allocation")
+                        }
+                    )
 
-                NavigationLink(
-                    destination: OptimizeView(document: $document,
-                                              strategy: strategy,
-                                              optimize: document.optimize,
-                                              activeTab: TabsOptimize.defaultTab),
-                    label: {
-                        Text("Optimize")
-                    })
+                    NavigationLink(
+                        destination: OptimizeView(document: $document,
+                                                  strategy: strategy,
+                                                  optimize: document.optimize,
+                                                  activeTab: TabsOptimize.defaultTab),
+                        label: {
+                            Text("Optimize")
+                        }
+                    )
 
-                NavigationLink(
-                    destination: RebalanceView(document: $document,
-                                               strategy: strategy,
-                                               activeTab: ""),
-                    label: {
-                        Text("Rebalance")
-                    })
-                
-                NavigationLink(
-                    destination: ConsolidationView(document: $document, strategy: strategy),
-                    label: {
-                        Text("Consolidation")
-                    })
-            }
+                    NavigationLink(
+                        destination: RebalanceView(document: $document,
+                                                   strategy: strategy,
+                                                   activeTab: ""),
+                        label: {
+                            Text("Rebalance")
+                        }
+                    )
+
+                    NavigationLink(
+                        destination: ConsolidationView(document: $document, strategy: strategy),
+                        label: {
+                            Text("Consolidation")
+                        }
+                    )
+                }
             #endif
         }
     }
@@ -137,23 +139,23 @@ struct StrategySummary: View {
         }
         .help("Strategy Shuffle")
     }
-    
+
     private var controlTextColor: Color {
         #if os(macOS)
-        Color(.controlTextColor)
+            Color(.controlTextColor)
         #else
-        Color.primary
+            Color.primary
         #endif
     }
-    
+
     private var disabledControlTextColor: Color {
         #if os(macOS)
-        Color(.disabledControlTextColor)
+            Color(.disabledControlTextColor)
         #else
-        Color.secondary
+            Color.secondary
         #endif
     }
-    
+
     // MARK: - Helpers
 
     private var canShowGrid: Bool {

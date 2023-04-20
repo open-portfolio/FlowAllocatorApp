@@ -10,20 +10,18 @@
 
 import SwiftUI
 
-import Tabler
 import SwiftPriorityQueue
+import Tabler
 
 import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 import FlowViz
 
 typealias SetResult = (TabsOptimize, HighResult) -> Void
 
 struct OptimizeTable: View {
-    
     @Binding private var document: AllocatDocument
     @Binding private var sorts: [ResultSort]
     private var results: [HighResult]
@@ -51,7 +49,7 @@ struct OptimizeTable: View {
 
     @State var selected: HighResult.ID? = nil
     @State var hovered: HighResult.ID? = nil
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -64,11 +62,11 @@ struct OptimizeTable: View {
             .lineLimit(1)
 
             TablerList1(.init(onHover: { if $1 { hovered = $0 } else { hovered = nil } }),
-                         header: header,
-                         row: row,
-                         rowBackground: { MyRowBackground($0, hovered: hovered, selected: selected) },
-                         results: results,
-                         selected: $selected)
+                        header: header,
+                        row: row,
+                        rowBackground: { MyRowBackground($0, hovered: hovered, selected: selected) },
+                        results: results,
+                        selected: $selected)
                 .onChange(of: selected) { nuID in
                     guard let result = results.first(where: { $0.id == nuID }) else { return }
                     onSetResult(tab, result)
@@ -99,7 +97,7 @@ struct OptimizeTable: View {
         .frame(width: 40)
     }
 
-    private func header(ctx: Binding<TablerContext<HighResult>>) -> some View {
+    private func header(ctx _: Binding<TablerContext<HighResult>>) -> some View {
         LazyVGrid(columns: gridItems, alignment: .leading, spacing: flowColumnSpacing) {
             ForEach(sorts, id: \.self) { sort in
                 OptimizeHeaderCell(document: $document, item: sort,
@@ -110,7 +108,7 @@ struct OptimizeTable: View {
             }
         }
     }
-    
+
     private func row(_ result: HighResult) -> some View {
         VStack {
             LazyVGrid(columns: gridItems, alignment: .leading, spacing: flowColumnSpacing) {
@@ -142,11 +140,11 @@ struct OptimizeTable: View {
     }
 
     // MARK: - Helpers
-    
+
     private var gridItems: [GridItem] {
         Array(repeating: GridItem(.flexible(minimum: 100)), count: sorts.count)
     }
-    
+
     private func getTargetAllocs(_ assetKeys: [AssetKey]) -> [VizSlice] {
         let av = AssetValue.getAssetValues(from: assetValueMap, orderBy: assetKeys)
         let ta = av.map { VizSlice($0.value, document.assetColorMap[$0.assetKey]?.1 ?? Color.gray) }
@@ -171,7 +169,6 @@ struct OptimizeTable: View {
     }
 
     private func attributeAction(_ attribute: ResultSort.Attribute) {
-
         if let index = getSortIndex(attribute) {
             // it's set, so we'll unset
             sorts.remove(at: index)

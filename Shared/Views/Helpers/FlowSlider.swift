@@ -17,7 +17,7 @@ public typealias OnSliderChanged = () -> Void
 struct FlowSlider: View {
     @Binding private var allocFlowMode: Double
     private var onSliderChanged: OnSliderChanged?
-    
+
     @ObservedObject private var proxy: DebouncedHolder<Double>
 
     init(allocFlowMode: Binding<Double>,
@@ -37,7 +37,8 @@ struct FlowSlider: View {
         HStack(alignment: .center) {
             Slider(value: self.$proxy.value,
                    minimumValueLabel: Text("Mirror"),
-                   maximumValueLabel: Text("Flow")) {
+                   maximumValueLabel: Text("Flow"))
+            {
                 EmptyView()
             }
             .padding()

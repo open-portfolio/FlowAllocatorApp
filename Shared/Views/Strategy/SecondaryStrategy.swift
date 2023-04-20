@@ -12,8 +12,8 @@ import SwiftUI
 
 import AllocData
 
-import FlowBase
 import FlowAllocHigh
+import FlowBase
 import FlowUI
 
 enum TabsSecondaryStrategy: Int {
@@ -54,7 +54,7 @@ struct SecondaryStrategy: View {
     }
 
     // MARK: - Properties
-    
+
     private var allocs: [MAllocation] {
         document.model.allocations.filter { $0.strategyKey == strategy.primaryKey }
     }

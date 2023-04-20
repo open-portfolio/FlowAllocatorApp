@@ -8,23 +8,22 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import SwiftUI
 
-import Tabler
 import AllocData
+import Tabler
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 struct RebalanceSalesTable: View {
     @Binding var document: AllocatDocument
-    
+
     var account: MAccount
     var salesMap: SaleMap
-    
+
     private let gridItems: [GridItem] = [
         GridItem(.flexible(minimum: 200.0), spacing: columnSpacing),
         GridItem(.flexible(minimum: 100.0), spacing: columnSpacing),
@@ -35,7 +34,7 @@ struct RebalanceSalesTable: View {
         GridItem(.flexible(minimum: 100.0), spacing: columnSpacing),
         GridItem(.flexible(minimum: 100.0), spacing: columnSpacing),
     ]
-    
+
     var body: some View {
         TablerStack(.init(rowSpacing: flowRowSpacing),
                     header: header,
@@ -44,8 +43,8 @@ struct RebalanceSalesTable: View {
                     results: sales)
             .sideways(minWidth: 1400, showIndicators: true)
     }
-    
-    private func header(ctx: Binding<TablerContext<Sale>>) -> some View {
+
+    private func header(ctx _: Binding<TablerContext<Sale>>) -> some View {
         LazyVGrid(columns: gridItems, alignment: .leading, spacing: flowColumnSpacing) {
             Text("Asset Class")
                 .modifier(HeaderCell())
@@ -65,7 +64,7 @@ struct RebalanceSalesTable: View {
                 .modifier(HeaderCell())
         }
     }
-    
+
     private func row(_ sale: Sale) -> some View {
         LazyVGrid(columns: gridItems, alignment: .leading, spacing: flowColumnSpacing) {
             Text(getAssetClassTitle(sale.assetKey))
@@ -99,56 +98,56 @@ struct RebalanceSalesTable: View {
         }
         .foregroundColor(colorPair(sale.assetKey).0)
     }
-    
+
     // MARK: - Helpers
-    
+
     private var ax: HighContext {
         document.context
     }
-    
+
     private func getSaleWashAmount(_ sale: Sale) -> Double {
         sale.getWashAmount(recentPurchasesMap: ax.recentPurchasesMap,
                            securityMap: ax.securityMap,
                            trackerSecuritiesMap: ax.trackerSecuritiesMap)
     }
-    
+
     private var accountKey: AccountKey {
         account.primaryKey
     }
-    
+
     private var baseRebalanceMap: RebalanceMap {
         document.allocationResult.accountRebalanceMap[accountKey] ?? [:]
     }
-    
+
     private var reducerMap: ReducerMap {
         document.allocationResult.accountReducerMap[accountKey] ?? [:]
     }
-    
+
     private var netRebalanceMap: RebalanceMap {
         ax.isReduceRebalance ? applyReducerMap(baseRebalanceMap, reducerMap, preserveZero: false) : baseRebalanceMap
     }
-    
+
     // NOTE: the base rebalance map should have the full list of assetKeys prior to the rebalance
     private var sales: [Sale] {
         let assetKeys = netRebalanceMap.map(\.key).sorted()
         return assetKeys.compactMap { salesMap[$0] }
     }
-    
+
     private var assetMap: AssetMap {
         if ax.assetMap.count > 0 {
             return ax.assetMap
         }
         return document.model.makeAssetMap()
     }
-    
+
     private func getAssetClassTitle(_ assetKey: AssetKey) -> String {
         assetMap[assetKey]?.titleID ?? ""
     }
-    
+
     private func rowBackground(sale: Sale) -> some View {
         document.getBackgroundFill(sale.assetKey)
     }
-    
+
     private func colorPair(_ assetKey: AssetKey) -> (Color, Color) {
         let colorCode = document.context.colorCodeMap[assetKey] ?? 0
         return getColor(colorCode)

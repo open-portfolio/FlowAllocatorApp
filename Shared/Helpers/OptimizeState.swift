@@ -8,16 +8,15 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import Foundation
 import os
 
 import Algorithms
 import SwiftPriorityQueue
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 
 @available(macOS 11.0, *)
 let oplog = Logger(subsystem: "app.flowallocator", category: "OptimizeState")
@@ -133,14 +132,14 @@ final class OptimizeState: ObservableObject {
         optimizeSortC = ax.settings.optimizeSortC
 
         aPQ = HighResultQueue(name: "A",
-                               order: HighResult.getOrder(optimizeSortA),
-                               maxHeap: maxHeap)
+                              order: HighResult.getOrder(optimizeSortA),
+                              maxHeap: maxHeap)
         bPQ = HighResultQueue(name: "B",
-                               order: HighResult.getOrder(optimizeSortB),
-                               maxHeap: maxHeap)
+                              order: HighResult.getOrder(optimizeSortB),
+                              maxHeap: maxHeap)
         cPQ = HighResultQueue(name: "C",
-                               order: HighResult.getOrder(optimizeSortC),
-                               maxHeap: maxHeap)
+                              order: HighResult.getOrder(optimizeSortC),
+                              maxHeap: maxHeap)
 
         clearAction()
 

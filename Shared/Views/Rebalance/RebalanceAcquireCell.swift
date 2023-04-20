@@ -8,14 +8,13 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 
 struct RebalanceAcquireCell: View {
     @Binding var document: AllocatDocument
@@ -35,7 +34,6 @@ struct RebalanceAcquireCell: View {
 
     @ViewBuilder
     private func rowContent() -> some View {
-        
         let losses: [String] = recentRealizedLosses
         if losses.count > 0 {
             HStack(alignment: .firstTextBaseline) {
@@ -66,7 +64,7 @@ struct RebalanceAcquireCell: View {
             Text(netPurchaseAmount.toCurrency(style: .compact, leadingPlus: true))
         }
     }
-    
+
     // MARK: - Properties
 
     private var ax: HighContext {

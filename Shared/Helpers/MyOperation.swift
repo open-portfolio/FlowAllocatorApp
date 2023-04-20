@@ -15,9 +15,9 @@ import Algorithms
 
 import SwiftPriorityQueue
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 
 private let myOp = Logger(subsystem: "app.flowallocator", category: "MyOperation")
 

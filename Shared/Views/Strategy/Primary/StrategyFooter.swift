@@ -10,9 +10,9 @@
 
 import SwiftUI
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 struct StrategyFooter: View {
@@ -32,7 +32,7 @@ struct StrategyFooter: View {
             }
         }
     }
-    
+
     private var upperControls: some View {
         HStack(alignment: .center, spacing: 10) {
             MyToggleButton(value: $document.displaySettings.strategyExpandBottom, imageName: "slider.horizontal.below.rectangle")
@@ -61,15 +61,15 @@ struct StrategyFooter: View {
             }
         }
     }
-    
+
     private var controlTextColor: Color {
         #if os(macOS)
-        Color(.controlTextColor)
+            Color(.controlTextColor)
         #else
-        Color.primary
+            Color.primary
         #endif
     }
-    
+
     private func sliderChangedAction() {
         // document.pushParamsToUndoStack(undoManager)
         document.refreshHighResult()

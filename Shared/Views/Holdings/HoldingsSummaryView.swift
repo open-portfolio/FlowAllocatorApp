@@ -8,14 +8,13 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 enum TabsHoldingTable: Int {
@@ -31,9 +30,9 @@ enum TabsHoldingTable: Int {
 
 struct HoldingsSummaryView: View {
     @AppStorage(TabsHoldingTable.storageKey) var tab: TabsHoldingTable = .defaultTab
-    
+
     @Binding var document: AllocatDocument
-    
+
     var initialTab: TabsHoldingTable
 
     @State private var summarySelection: SummarySelection = .presentValue

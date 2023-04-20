@@ -12,13 +12,12 @@ import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 struct AccountSummary: View {
-
     // MARK: - Parameters
 
     @Binding var document: AllocatDocument
@@ -63,36 +62,40 @@ struct AccountSummary: View {
         }
         .toolbar {
             ToolbarItemGroup(placement: .principal) { viewControls }
-            
+
             #if os(macOS)
-            ToolbarItemGroup(placement: .primaryAction) { barControls }
+                ToolbarItemGroup(placement: .primaryAction) { barControls }
             #else
-            ToolbarItemGroup(placement: .automatic) {
-                NavigationLink(
-                    destination: AccountRebalanceView(document: $document, account: account),
-                    label: {
-                        Text("Rebalance")
-                    })
+                ToolbarItemGroup(placement: .automatic) {
+                    NavigationLink(
+                        destination: AccountRebalanceView(document: $document, account: account),
+                        label: {
+                            Text("Rebalance")
+                        }
+                    )
                     .disabled(!account.canTrade)
-                
-                NavigationLink(
-                    destination: HoldingTable(document: $document, account: account),
-                    label: {
-                        Text("Holdings")
-                    })
-                
-                NavigationLink(
-                    destination: CapTable(document: $document, account: account),
-                    label: {
-                        Text("Caps")
-                    })
-                
-                NavigationLink(
-                    destination: HistoryTable(document: $document, account: account),
-                    label: {
-                        Text("Transactions")
-                    })
-            }
+
+                    NavigationLink(
+                        destination: HoldingTable(document: $document, account: account),
+                        label: {
+                            Text("Holdings")
+                        }
+                    )
+
+                    NavigationLink(
+                        destination: CapTable(document: $document, account: account),
+                        label: {
+                            Text("Caps")
+                        }
+                    )
+
+                    NavigationLink(
+                        destination: HistoryTable(document: $document, account: account),
+                        label: {
+                            Text("Transactions")
+                        }
+                    )
+                }
             #endif
         }
     }

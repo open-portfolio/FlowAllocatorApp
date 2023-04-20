@@ -16,4 +16,3 @@ import KeyWindow
 extension AllocatDocument: KeyWindowValueKey {
     public typealias Value = Binding<Self>
 }
-

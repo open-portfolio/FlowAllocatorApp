@@ -10,10 +10,10 @@
 
 import SwiftUI
 
+import AllocData
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
-import AllocData
 
 import FlowUI
 
@@ -37,7 +37,7 @@ struct AssetTitleHeader: View {
         let color = isRollup ? document.accent.opacity(0.8) : Color.componentize(Color.gray).opacity(0.5)
         return MyColor.getBackgroundFill(color)
     }
-    
+
     private var formattedValue: String {
         switch document.displaySettings.strategyMoneySelection {
         case .presentValue:

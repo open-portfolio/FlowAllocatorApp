@@ -8,17 +8,17 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-import os
 import Combine
+import os
 import SwiftUI
 
 import KeyWindow
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 let log = Logger(subsystem: "app.flowallocator", category: "App")
@@ -74,7 +74,8 @@ struct AllocatApp: App {
         #if os(macOS)
             Settings {
                 SharedSettingsView(termsURL: URL(string: "https://openalloc.github.io/terms/")!,
-                                   privacyURL: URL(string: "https://openalloc.github.io/privacy/")!) {
+                                   privacyURL: URL(string: "https://openalloc.github.io/privacy/")!)
+                {
                     GeneralView()
                 }
                 .environmentObject(infoMessageStore)

@@ -8,7 +8,6 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import SwiftUI
 
 import FlowUI
@@ -51,7 +50,7 @@ struct GeneralView: View {
                     .foregroundColor(.secondary)
             }
             .padding()
-            
+
             VStack(alignment: .leading) {
                 TimeOfDayPicker(title: "Default Time of Day", timeOfDay: $defTimeOfDay)
                 Text("Used in parsing dates and times")
@@ -60,14 +59,13 @@ struct GeneralView: View {
             }
             .padding()
 
-
             Button("Restore Defaults", action: {
                 UserDefaults.clear()
             })
             .padding()
         }
     }
-    
+
     private var formattedAcknowledgedTermsAt: String {
         guard let acceptedDate = GeneralView.isoDateFormatter.date(from: userAgreedTermsAt)
         else { return "Invalid Date" }

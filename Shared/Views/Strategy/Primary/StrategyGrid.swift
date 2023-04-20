@@ -8,28 +8,26 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 
 struct StrategyGrid: View {
-    
     // MARK: - Parameters
 
     @Binding var document: AllocatDocument
     var strategy: MStrategy
 
     // MARK: - Locals
-    
+
     @State private var hoveredIndex: Int? = nil
 
     // MARK: - Views
-    
+
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading) { // .leading needed to keep list from centering when squeezed horizontally
@@ -37,22 +35,22 @@ struct StrategyGrid: View {
                     .frame(maxHeight: 120)
                     .padding(.leading, 16)
                     .padding(.trailing, 15)
-                    .padding(.bottom, -10) // TODO can we get rid of this?
+                    .padding(.bottom, -10) // TODO: can we get rid of this?
                 List {
                     ForEach(0 ..< table.rows.count, id: \.self) { n in
                         let isMovable = n < assetKeyCount
-                        
+
                         rowView(n, geo, document.allocationTable.rows[n], isMovable: isMovable)
                             .frame(maxWidth: .infinity)
                             .moveDisabled(!isMovable)
                             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: rowSpacing, trailing: 0))
-                        
+
                             // hovering changes the background, slightly
                             .onHover { if $0 { hoveredIndex = n } }
                             .background(hoveredIndex == n ? Color.accentColor.opacity(0.1) : Color.clear)
                     }
                     .onMove(perform: rowMoveAction)
-                    
+
                     if let footNote_ = footNote {
                         HStack {
                             Spacer()
@@ -117,7 +115,7 @@ struct StrategyGrid: View {
         }
     }
 
-    private func rowView(_ n: Int, _ geo: GeometryProxy, _ row: HighRow, isMovable: Bool) -> some View {
+    private func rowView(_: Int, _ geo: GeometryProxy, _ row: HighRow, isMovable: Bool) -> some View {
         HStack(spacing: categorySpacing) {
             // COLUMN assets
             StrategyCell(document: $document,
@@ -167,11 +165,11 @@ struct StrategyGrid: View {
     private var strategyTradingColor: Color {
         accent.opacity(0.8)
     }
-    
+
     private var strategyNonTradingColor: Color {
         accent.opacity(0.6)
     }
-    
+
     private var accent: Color {
         document.accent
     }
@@ -287,7 +285,7 @@ struct StrategyGrid: View {
     private func rowMoveAction(from source: IndexSet, to destination: Int) {
         let count = document.displaySettings.params.assetKeys.count
         guard destination <= count else {
-            //print("can't move to destination \(destination)")
+            // print("can't move to destination \(destination)")
             return
         }
         document.displaySettings.params.assetKeys.move(fromOffsets: source, toOffset: destination)

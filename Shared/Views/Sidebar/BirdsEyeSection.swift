@@ -12,16 +12,15 @@ import SwiftUI
 
 import AllocData
 
+import FlowAllocHigh
 import FlowBase
 import FlowUI
-import FlowAllocHigh
 import FlowViz
 
 struct BirdsEyeSection<HS>: View where HS: View {
-    
     @Binding var document: AllocatDocument
     let strategiedHoldingsSummary: HS
-    
+
     var body: some View {
         ZStack {
             VizRingView(holdingAllocs)
@@ -43,11 +42,11 @@ struct BirdsEyeSection<HS>: View where HS: View {
             document.displaySettings.activeSidebarMenuKey = SidebarMenuIDs.globalHoldings.rawValue
         }
     }
-    
+
     private var ax: HighContext {
         document.context
     }
-    
+
     private var totalValue: Double {
         ax.rawHoldingsSummary.presentValue
     }
@@ -67,13 +66,13 @@ struct BirdsEyeSection<HS>: View where HS: View {
 
             let targetPct = item.value.presentValue / tv
 
-            array.append(VizSlice(targetPct, color.1))  //item.key.assetNormID
+            array.append(VizSlice(targetPct, color.1)) // item.key.assetNormID
         }
     }
 }
 
-//struct BirdsEyeSection_Previews: PreviewProvider {
+// struct BirdsEyeSection_Previews: PreviewProvider {
 //    static var previews: some View {
 //        BirdsEyeSection()
 //    }
-//}
+// }

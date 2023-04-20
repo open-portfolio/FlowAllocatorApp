@@ -8,16 +8,16 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
+import Algorithms
 import Combine
 import SwiftUI
-import Algorithms
 
-import SwiftPriorityQueue
 import AllocData
+import SwiftPriorityQueue
 
+import FlowAllocHigh
 import FlowAllocLow
 import FlowBase
-import FlowAllocHigh
 import FlowUI
 
 enum TabsOptimize: Int {
@@ -25,49 +25,49 @@ enum TabsOptimize: Int {
     case resultsA
     case resultsB
     case resultsC
-    
+
     static let defaultTab = TabsOptimize.resultsA
     static let storageKey = "OptimizeTab"
 }
 
 struct OptimizeView: View {
     @AppStorage(TabsOptimize.storageKey) var tab: TabsOptimize = .defaultTab
-    
+
     // MARK: - Parameters
-    
+
     @Binding var document: AllocatDocument
     var strategy: MStrategy
-    
+
     // NOTE this apparent redundancy is needed because change events are not propagating if referring to document.optimize, as in...
     // private var optimize: OptimizeState { document.optimize }
     @ObservedObject var optimize: OptimizeState
-    
+
     // MARK: - Locals
-    
+
     let permutationCountThreshold = 20_000_000
-    
+
     @State private var resultMap = [TabsOptimize: HighResult]()
     @State private var userStopped = false
-    
+
     // MARK: - Initialization
-    
+
     var body: some View {
         ScrollView {
             HStack {
                 Text("Strategy Optimize")
                     .font(.title)
                     .lineLimit(1)
-                
+
                 Spacer()
                 HelpButton(appName: "allocator", topicName: "optimize")
             }
             .padding()
-            
+
             HStack {
                 StatsBoxView(title: "Progress") {
                     StatusDisplay(title: nil, value: progress, format: { "\($0.toPercent1())" }, textStyle: .title)
                 }
-                
+
                 StatsBoxView(title: "Time") {
                     StatusDisplay(title: "Elapsed (secs)", value: optimize.elapsedTimeFast, format: { $0.toGeneral() })
                         .padding(.bottom, 5)
@@ -87,27 +87,27 @@ struct OptimizeView: View {
             }
             .frame(maxHeight: 140) // needed on macOS in full screen
             .padding(.horizontal)
-            
+
             HStack {
                 Button(action: startAction, label: {
                     Label("Optimize", systemImage: "play.fill")
                 })
                 .disabled(!ready)
-                
+
                 Button(action: stopAction, label: {
                     Label("Stop", systemImage: "stop.fill")
                 })
                 .disabled(ready)
-                
+
                 Spacer()
-                
+
                 Button(action: clearAction, label: {
                     Label("Clear Results", systemImage: "xmark")
                 })
                 .disabled(!ready)
             }
             .padding()
-            
+
             TabView(selection: $tab) {
                 OptimizeTable(document: $document, sorts: $document.modelSettings.optimizeSortA,
                               results: optimize.aPQ?.pq.reversed() ?? [],
@@ -117,7 +117,7 @@ struct OptimizeView: View {
                               tab: .resultsA)
                     .tabItem { Text("Results A") }
                     .tag(TabsOptimize.resultsA)
-                
+
                 OptimizeTable(document: $document, sorts: $document.modelSettings.optimizeSortB,
                               results: optimize.bPQ?.pq.reversed() ?? [],
                               assetValueMap: allocMap,
@@ -126,7 +126,7 @@ struct OptimizeView: View {
                               tab: .resultsB)
                     .tabItem { Text("Results B") }
                     .tag(TabsOptimize.resultsB)
-                
+
                 OptimizeTable(document: $document, sorts: $document.modelSettings.optimizeSortC,
                               results: optimize.cPQ?.pq.reversed() ?? [],
                               assetValueMap: allocMap,
@@ -135,7 +135,7 @@ struct OptimizeView: View {
                               tab: .resultsC)
                     .tabItem { Text("Results C") }
                     .tag(TabsOptimize.resultsC)
-                
+
                 OptimizeSettings(document: $document,
                                  maxHeap: maxHeap,
                                  maxCores: maxCores,
@@ -146,65 +146,65 @@ struct OptimizeView: View {
             .frame(minHeight: 300, idealHeight: 600, maxHeight: .infinity)
             .onChange(of: tab, perform: tabChangedAction)
             .padding(.horizontal)
-            
+
             Spacer()
         }
         .onReceive(optimize.timer.objectWillChange) { _ in
             optimize.updateElapsedTimeFast()
         }
     }
-    
+
     // MARK: - Properties
-    
+
     private var maxHeap: Int {
         document.modelSettings.optimizeMaxHeap
     }
-    
+
     private var maxCores: Int {
         document.modelSettings.optimizeMaxCores
     }
-    
+
     private var optimizePriority: OptimizePriority {
         let rawValue = document.modelSettings.optimizePriority
         return OptimizePriority(rawValue: rawValue) ?? OptimizePriority.default_
     }
-    
+
     private var allocMap: AssetValueMap {
         let allocs = document.context.strategyAllocsMap[strategy.primaryKey] ?? []
         return AssetValue.getAssetValueMap(from: allocs)
     }
-    
+
     private var ax: HighContext {
         document.context
     }
-    
+
     private var userLimitExceededCount: Int {
         optimize.userLimitExceededCount
     }
-    
+
     private var elapsedInterval: TimeInterval {
         optimize.timer.timerRefreshedElapsedInterval
     }
-    
+
     private var permutationsCompleted: Int {
         optimize.permutationsCompleted
     }
-    
+
     private var progress: Double {
         guard permutationCount > 0 else { return 0 }
         return Double(permutationsCompleted) / Double(permutationCount)
     }
-    
+
     private var permutationsPerSecond: Double {
         guard elapsedInterval > 0 else { return 0 }
         return Double(permutationsCompleted) / elapsedInterval
     }
-    
+
     private var capRate: Double {
         guard permutationsCompleted > 0 else { return 0 }
         return Double(userLimitExceededCount) / Double(permutationsCompleted)
     }
-    
+
     private var permutationCount: Int {
         let accountCount = ax.variableAccountKeysForStrategy.count
         let assetCount = ax.allocatingAllocAssetKeys.count
@@ -216,42 +216,42 @@ struct OptimizeView: View {
             factorial(assetCount)
         return count
     }
-    
+
     private var estimatedSecs: Double {
         guard permutationsPerSecond > 0 else { return 0 }
         return Double(permutationCount) / permutationsPerSecond
     }
-    
+
     private func formatEstimate(_ seconds: Double) -> String {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.weekOfMonth, .day, .hour, .minute]
         formatter.unitsStyle = .abbreviated
         return formatter.string(from: seconds) ?? ""
     }
-    
+
     private var ready: Bool {
         userStopped || optimize.operationQueue.operationCount == 0
     }
-    
+
     // MARK: - Action Handlers
-    
+
     private func startAction() {
         userStopped = false
         optimize.startAction(ax: ax, flowModes: OptimizeState.defaultFlowModes)
     }
-    
+
     private func stopAction() {
         userStopped = true
         optimize.cancelOperationsAction()
     }
-    
+
     private func clearAction() {
         resultMap.removeAll()
         optimize.clearAction()
     }
-    
+
     // MARK: - Helpers
-    
+
     private func setParams(for result: HighResult) {
         let oldParams = document.displaySettings.params
         let newParams = result.getBaseParams(isStrict: oldParams.isStrict,
@@ -259,14 +259,14 @@ struct OptimizeView: View {
         guard oldParams != newParams else { return }
         document.setParams(newParams)
     }
-    
+
     private func setResultAction(for tab: TabsOptimize, _ result: HighResult) {
         resultMap[tab] = result
         setParams(for: result)
     }
-    
+
     // MARK: - Tab support
-    
+
     private func tabChangedAction(newValue: TabsOptimize) {
         if let result = resultMap[newValue] {
             setParams(for: result)

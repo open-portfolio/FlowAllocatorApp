@@ -80,7 +80,7 @@ struct StrategyCommand: View {
         }, label: {
             Text("Shuffle")
         })
-            .keyboardShortcut("f", modifiers: defaultEventModifier)
+        .keyboardShortcut("f", modifiers: defaultEventModifier)
 
         Divider()
 
@@ -109,15 +109,15 @@ struct StrategyCommand: View {
         }, label: {
             Text("Begin Optimize")
         })
-            .disabled(ax == nil)
-            .keyboardShortcut("b", modifiers: defaultEventModifier)
+        .disabled(ax == nil)
+        .keyboardShortcut("b", modifiers: defaultEventModifier)
 
         Button(action: {
             document?.optimizeAbort()
         }, label: {
             Text("Cancel")
         })
-            .keyboardShortcut(".", modifiers: defaultEventModifier)
+        .keyboardShortcut(".", modifiers: defaultEventModifier)
     }
 
     private var ax: HighContext? {

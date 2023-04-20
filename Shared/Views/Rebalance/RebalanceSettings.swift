@@ -10,11 +10,10 @@
 
 import SwiftUI
 
-import FlowBase
 import FlowAllocHigh
+import FlowBase
 
 struct RebalanceSettings: View {
-
     @Binding var minimumSaleAmount: Int
     @Binding var minimumPositionValue: Int
 

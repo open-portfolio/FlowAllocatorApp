@@ -20,7 +20,7 @@ struct BaseRebalanceCell<Content>: View where Content: View {
     private let amount: Double
     private let assetKey: AssetKey
     private let rowContent: () -> Content
-    
+
     init(document: Binding<AllocatDocument>, title: String, amount: Double, assetKey: AssetKey, rowContent: @escaping () -> Content) {
         _document = document
         self.title = title
@@ -28,7 +28,7 @@ struct BaseRebalanceCell<Content>: View where Content: View {
         self.assetKey = assetKey
         self.rowContent = rowContent
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack(alignment: .top) {
@@ -41,9 +41,9 @@ struct BaseRebalanceCell<Content>: View where Content: View {
                 Text(amount.toCurrency(style: .whole))
                     .font(.title3)
             }
-            
+
             rowContent()
-            
+
             Spacer()
 
             HStack(alignment: .bottom) {
@@ -54,15 +54,14 @@ struct BaseRebalanceCell<Content>: View where Content: View {
         .padding(.horizontal)
         .padding(.vertical, 5)
         .frame(maxWidth: .infinity,
-               //minHeight: 170, // workaround for Monterey cell height issue
+               // minHeight: 170, // workaround for Monterey cell height issue
                maxHeight: .infinity)
         .foregroundColor(document.assetColorMap[assetKey]?.0 ?? Color.primary)
         .background(document.getBackgroundFill(assetKey))
         .cornerRadius(20)
     }
-    
+
     private var assetTitle: String {
         document.context.assetMap[assetKey]?.title ?? "Unknown Asset Class"
     }
 }
-
