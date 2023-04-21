@@ -232,6 +232,7 @@
 		40D85245264A106C003316C1 /* AllocatDocument+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AllocatDocument+Helpers.swift"; sourceTree = "<group>"; };
 		40E04164266222FF0056FC9C /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		40E3F075263DF3BE00B18098 /* OptimizeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimizeHeaderCell.swift; sourceTree = "<group>"; };
+		40E761F529F2323A00BA2BB5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		40FF177B2680145D003DA084 /* GettingStarted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStarted.swift; sourceTree = "<group>"; };
 		40FF177E26802797003DA084 /* AssetTitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTitleHeader.swift; sourceTree = "<group>"; };
 		40FF178126802A58003DA084 /* GridCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCategory.swift; sourceTree = "<group>"; };
@@ -385,6 +386,7 @@
 		407A16ED261F91E00020B4FC = {
 			isa = PBXGroup;
 			children = (
+				40E761F529F2323A00BA2BB5 /* README.md */,
 				407A16F2261F91E00020B4FC /* Shared */,
 				407A16FD261F91E10020B4FC /* iOS */,
 				407A1704261F91E10020B4FC /* macOS */,
