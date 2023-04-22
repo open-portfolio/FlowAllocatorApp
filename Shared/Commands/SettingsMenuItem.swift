@@ -10,11 +10,8 @@
 
 import SwiftUI
 
-import KeyWindow
-
 struct SettingsMenuItemBool: View {
-    @KeyWindowValueBinding(AllocatDocument.self)
-    var document: AllocatDocument?
+    @FocusedBinding(\.document) private var document: AllocatDocument?
 
     var keyPath: WritableKeyPath<AllocatDocument, Bool>
     var desc: String
@@ -31,8 +28,7 @@ struct SettingsMenuItemBool: View {
 }
 
 struct SettingsMenuItemKeyed<T: Equatable>: View {
-    @KeyWindowValueBinding(AllocatDocument.self)
-    var document: AllocatDocument?
+    @FocusedBinding(\.document) private var document: AllocatDocument?
 
     var keyPath: WritableKeyPath<AllocatDocument, T>
     var keyToMatch: T

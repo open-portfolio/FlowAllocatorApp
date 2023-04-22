@@ -10,9 +10,13 @@
 
 import SwiftUI
 
-import KeyWindow
-
-// for commands on document see https://lostmoa.com/blog/KeyWindowABetterWayOfExposingValuesFromTheKeyWindow/
-extension AllocatDocument: KeyWindowValueKey {
+extension AllocatDocument: FocusedValueKey {
     public typealias Value = Binding<Self>
+}
+
+extension FocusedValues {
+    var document: AllocatDocument.Value? {
+        get { self[AllocatDocument.self] }
+        set { self[AllocatDocument.self] = newValue }
+    }
 }

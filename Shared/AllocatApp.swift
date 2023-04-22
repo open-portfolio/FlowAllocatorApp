@@ -12,8 +12,6 @@ import Combine
 import os
 import SwiftUI
 
-import KeyWindow
-
 import AllocData
 
 import FlowAllocHigh
@@ -36,7 +34,6 @@ struct AllocatApp: App {
 
             ContentView(document: file.$document)
                 .environmentObject(infoMessageStore)
-                .observeWindow()
         }
         .commands {
             SidebarCommands() // adds a toggle sidebar to View menu

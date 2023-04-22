@@ -11,8 +11,6 @@
 import Combine
 import SwiftUI
 
-import KeyWindow
-
 import AllocData
 
 import FlowAllocHigh
@@ -27,8 +25,7 @@ struct ImportPayload {
 }
 
 struct ImportCommand: View {
-    @KeyWindowValueBinding(AllocatDocument.self)
-    var document: AllocatDocument?
+    @FocusedBinding(\.document) private var document: AllocatDocument?
 
     let defaultEventModifier: EventModifiers = [.command] // [.shift, .option, .command]
 

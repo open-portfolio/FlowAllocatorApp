@@ -84,7 +84,7 @@ struct ContentView: View {
                         fetchAssetValues: fetchAssetValues)
 
                 // to provide access to key document in sidebar
-                .keyWindow(AllocatDocument.self, $document)
+                // .keyWindow(AllocatDocument.self, $document)
                 .frame(minWidth: minSidebarWidth, idealWidth: 250, maxWidth: 300)
 
             WelcomeView {

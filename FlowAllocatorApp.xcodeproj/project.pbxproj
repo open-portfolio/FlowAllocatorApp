@@ -52,8 +52,8 @@
 		4042AB2A2673035C00B0CAD7 /* CategoryTitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4042AB282673035C00B0CAD7 /* CategoryTitleHeader.swift */; };
 		4050B09D2675C8C000D52EF1 /* ConsolidationToggles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050B09C2675C8C000D52EF1 /* ConsolidationToggles.swift */; };
 		4050B09E2675C8C000D52EF1 /* ConsolidationToggles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050B09C2675C8C000D52EF1 /* ConsolidationToggles.swift */; };
-		4055B17D2715E60E00E6705B /* AllocatDocument+KeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055B17C2715E60E00E6705B /* AllocatDocument+KeyWindow.swift */; };
-		4055B17E2715E60E00E6705B /* AllocatDocument+KeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055B17C2715E60E00E6705B /* AllocatDocument+KeyWindow.swift */; };
+		4055B17D2715E60E00E6705B /* AllocatDocument+FocusedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055B17C2715E60E00E6705B /* AllocatDocument+FocusedValue.swift */; };
+		4055B17E2715E60E00E6705B /* AllocatDocument+FocusedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055B17C2715E60E00E6705B /* AllocatDocument+FocusedValue.swift */; };
 		406457B6263FC16900906445 /* MoneySelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406457B5263FC16900906445 /* MoneySelection.swift */; };
 		406457B7263FC16900906445 /* MoneySelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406457B5263FC16900906445 /* MoneySelection.swift */; };
 		406457DA2640441A00906445 /* RebalanceSalesTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406457D92640441A00906445 /* RebalanceSalesTable.swift */; };
@@ -183,7 +183,7 @@
 		4042AB252673028000B0CAD7 /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		4042AB282673035C00B0CAD7 /* CategoryTitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTitleHeader.swift; sourceTree = "<group>"; };
 		4050B09C2675C8C000D52EF1 /* ConsolidationToggles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsolidationToggles.swift; sourceTree = "<group>"; };
-		4055B17C2715E60E00E6705B /* AllocatDocument+KeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AllocatDocument+KeyWindow.swift"; sourceTree = "<group>"; };
+		4055B17C2715E60E00E6705B /* AllocatDocument+FocusedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AllocatDocument+FocusedValue.swift"; sourceTree = "<group>"; };
 		406457B5263FC16900906445 /* MoneySelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneySelection.swift; sourceTree = "<group>"; };
 		406457D92640441A00906445 /* RebalanceSalesTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebalanceSalesTable.swift; sourceTree = "<group>"; };
 		406BAACC27E27ABB000A0ED4 /* BirdsEyeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdsEyeSection.swift; sourceTree = "<group>"; };
@@ -535,7 +535,7 @@
 				4019985126502846002C6BBE /* AllocatDocument+Refresh.swift */,
 				40D85245264A106C003316C1 /* AllocatDocument+Helpers.swift */,
 				401CBC4B2710D11A00942CE2 /* AllocatDocument+Equatable.swift */,
-				4055B17C2715E60E00E6705B /* AllocatDocument+KeyWindow.swift */,
+				4055B17C2715E60E00E6705B /* AllocatDocument+FocusedValue.swift */,
 				4074639027533A2700D6D0DB /* AllocatDocument+Colors.swift */,
 			);
 			path = Document;
@@ -744,7 +744,7 @@
 				4019985226502846002C6BBE /* AllocatDocument+Refresh.swift in Sources */,
 				4002E61A261FE74C005A5D1C /* StrategySummary.swift in Sources */,
 				409FC3262700115B00C7C7BD /* CapTable.swift in Sources */,
-				4055B17D2715E60E00E6705B /* AllocatDocument+KeyWindow.swift in Sources */,
+				4055B17D2715E60E00E6705B /* AllocatDocument+FocusedValue.swift in Sources */,
 				401CBC4C2710D11A00942CE2 /* AllocatDocument+Equatable.swift in Sources */,
 				40D4F1622663E7CC004D2E3C /* ViewCommand.swift in Sources */,
 				406457DA2640441A00906445 /* RebalanceSalesTable.swift in Sources */,
@@ -811,7 +811,7 @@
 				40D85247264A106C003316C1 /* AllocatDocument+Helpers.swift in Sources */,
 				408E6089262AB160009D30E8 /* MyTimer.swift in Sources */,
 				4019985326502846002C6BBE /* AllocatDocument+Refresh.swift in Sources */,
-				4055B17E2715E60E00E6705B /* AllocatDocument+KeyWindow.swift in Sources */,
+				4055B17E2715E60E00E6705B /* AllocatDocument+FocusedValue.swift in Sources */,
 				401CBC4D2710D11A00942CE2 /* AllocatDocument+Equatable.swift in Sources */,
 				409FC3272700115B00C7C7BD /* CapTable.swift in Sources */,
 				4002E619261FE74C005A5D1C /* StrategySummary.swift in Sources */,
