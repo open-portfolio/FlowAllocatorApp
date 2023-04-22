@@ -57,7 +57,7 @@ struct AllocatApp: App {
 
             CommandGroup(replacing: CommandGroupPlacement.help) {
                 Button(action: {
-                    openURL(URL(string: "https://openalloc.github.io/allocator/contents/index.html")!)
+                    openURL(URL(string: "https://open-portfolio.github.io/allocator/contents")!)
                 }, label: {
                     Text("FlowAllocator Help")
                 })
@@ -70,8 +70,8 @@ struct AllocatApp: App {
 
         #if os(macOS)
             Settings {
-                SharedSettingsView(termsURL: URL(string: "https://openalloc.github.io/terms/")!,
-                                   privacyURL: URL(string: "https://openalloc.github.io/privacy/")!)
+                SharedSettingsView(termsURL: URL(string: "https://open-portfolio.github.io/terms")!,
+                                   privacyURL: URL(string: "https://open-portfolio.github.io/privacy")!)
                 {
                     GeneralView()
                 }
