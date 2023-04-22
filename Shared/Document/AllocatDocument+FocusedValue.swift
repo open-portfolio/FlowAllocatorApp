@@ -1,5 +1,5 @@
 //
-//  AllocatDocument+KeyWindow.swift
+//  AllocatDocument+FocusedValue.swift
 //
 // Copyright 2021, 2022  OpenAlloc LLC
 //
