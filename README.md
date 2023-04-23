@@ -1,4 +1,4 @@
-# FlowAllocator App
+# Flow Allocator App
 
 _Portfolio rebalancing tool for the Do-It-Yourself Investor_
 

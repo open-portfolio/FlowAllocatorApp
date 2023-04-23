@@ -59,7 +59,7 @@ struct AllocatApp: App {
                 Button(action: {
                     openURL(URL(string: "https://open-portfolio.github.io/allocator/contents")!)
                 }, label: {
-                    Text("FlowAllocator Help")
+                    Text("Flow Allocator Help")
                 })
             }
 

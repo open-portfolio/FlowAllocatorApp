@@ -192,9 +192,9 @@
 		407A16F4261F91E00020B4FC /* AllocatDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocatDocument.swift; sourceTree = "<group>"; };
 		407A16F5261F91E00020B4FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		407A16F6261F91E10020B4FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		407A16FB261F91E10020B4FC /* FlowAllocatorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowAllocatorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		407A16FB261F91E10020B4FC /* Flow Allocator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flow Allocator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		407A16FE261F91E10020B4FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		407A1703261F91E10020B4FC /* FlowAllocatorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowAllocatorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		407A1703261F91E10020B4FC /* Flow Allocator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flow Allocator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		407A1705261F91E10020B4FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		407A1706261F91E10020B4FC /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		407A170B261F91E10020B4FC /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -413,8 +413,8 @@
 		407A16FC261F91E10020B4FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				407A16FB261F91E10020B4FC /* FlowAllocatorApp.app */,
-				407A1703261F91E10020B4FC /* FlowAllocatorApp.app */,
+				407A16FB261F91E10020B4FC /* Flow Allocator.app */,
+				407A1703261F91E10020B4FC /* Flow Allocator.app */,
 				407A170B261F91E10020B4FC /* Tests iOS.xctest */,
 				407A1716261F91E10020B4FC /* Tests macOS.xctest */,
 			);
@@ -551,9 +551,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		407A16FA261F91E10020B4FC /* FlowAllocatorApp (iOS) */ = {
+		407A16FA261F91E10020B4FC /* Flow Allocator (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 407A1727261F91E10020B4FC /* Build configuration list for PBXNativeTarget "FlowAllocatorApp (iOS)" */;
+			buildConfigurationList = 407A1727261F91E10020B4FC /* Build configuration list for PBXNativeTarget "Flow Allocator (iOS)" */;
 			buildPhases = (
 				407A16F7261F91E10020B4FC /* Sources */,
 				407A16F8261F91E10020B4FC /* Frameworks */,
@@ -563,18 +563,18 @@
 			);
 			dependencies = (
 			);
-			name = "FlowAllocatorApp (iOS)";
+			name = "Flow Allocator (iOS)";
 			packageProductDependencies = (
 				4081D4FA267829F3004DB43E /* FlowAllocHigh */,
 				40D9973E288DF5D30075CD6C /* FlowUI */,
 			);
 			productName = "FlowAllocator (iOS)";
-			productReference = 407A16FB261F91E10020B4FC /* FlowAllocatorApp.app */;
+			productReference = 407A16FB261F91E10020B4FC /* Flow Allocator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		407A1702261F91E10020B4FC /* FlowAllocatorApp (macOS) */ = {
+		407A1702261F91E10020B4FC /* Flow Allocator (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 407A172A261F91E10020B4FC /* Build configuration list for PBXNativeTarget "FlowAllocatorApp (macOS)" */;
+			buildConfigurationList = 407A172A261F91E10020B4FC /* Build configuration list for PBXNativeTarget "Flow Allocator (macOS)" */;
 			buildPhases = (
 				407A16FF261F91E10020B4FC /* Sources */,
 				407A1700261F91E10020B4FC /* Frameworks */,
@@ -584,13 +584,13 @@
 			);
 			dependencies = (
 			);
-			name = "FlowAllocatorApp (macOS)";
+			name = "Flow Allocator (macOS)";
 			packageProductDependencies = (
 				4080A08A288DEF5400D7CA2C /* FlowAllocHigh */,
 				4080A08C288DEF9E00D7CA2C /* FlowUI */,
 			);
 			productName = "FlowAllocator (macOS)";
-			productReference = 407A1703261F91E10020B4FC /* FlowAllocatorApp.app */;
+			productReference = 407A1703261F91E10020B4FC /* Flow Allocator.app */;
 			productType = "com.apple.product-type.application";
 		};
 		407A170A261F91E10020B4FC /* Tests iOS */ = {
@@ -656,7 +656,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 407A16F1261F91E00020B4FC /* Build configuration list for PBXProject "FlowAllocatorApp" */;
+			buildConfigurationList = 407A16F1261F91E00020B4FC /* Build configuration list for PBXProject "Flow Allocator" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -671,8 +671,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				407A16FA261F91E10020B4FC /* FlowAllocatorApp (iOS) */,
-				407A1702261F91E10020B4FC /* FlowAllocatorApp (macOS) */,
+				407A16FA261F91E10020B4FC /* Flow Allocator (iOS) */,
+				407A1702261F91E10020B4FC /* Flow Allocator (macOS) */,
 				407A170A261F91E10020B4FC /* Tests iOS */,
 				407A1715261F91E10020B4FC /* Tests macOS */,
 			);
@@ -873,12 +873,12 @@
 /* Begin PBXTargetDependency section */
 		407A170D261F91E10020B4FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 407A16FA261F91E10020B4FC /* FlowAllocatorApp (iOS) */;
+			target = 407A16FA261F91E10020B4FC /* Flow Allocator (iOS) */;
 			targetProxy = 407A170C261F91E10020B4FC /* PBXContainerItemProxy */;
 		};
 		407A1718261F91E10020B4FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 407A1702261F91E10020B4FC /* FlowAllocatorApp (macOS) */;
+			target = 407A1702261F91E10020B4FC /* Flow Allocator (macOS) */;
 			targetProxy = 407A1717261F91E10020B4FC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1011,7 +1011,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.flowallocator;
-				PRODUCT_NAME = FlowAllocatorApp;
+				PRODUCT_NAME = "Flow Allocator";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1034,7 +1034,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.flowallocator;
-				PRODUCT_NAME = FlowAllocatorApp;
+				PRODUCT_NAME = "Flow Allocator";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1065,7 +1065,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.13;
 				PRODUCT_BUNDLE_IDENTIFIER = org.openalloc.flowallocator;
-				PRODUCT_NAME = FlowAllocatorApp;
+				PRODUCT_NAME = "Flow Allocator";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1094,7 +1094,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.13;
 				PRODUCT_BUNDLE_IDENTIFIER = org.openalloc.flowallocator;
-				PRODUCT_NAME = FlowAllocatorApp;
+				PRODUCT_NAME = "Flow Allocator";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1118,7 +1118,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "FlowAllocator (iOS)";
+				TEST_TARGET_NAME = "Flow Allocator (iOS)";
 			};
 			name = Debug;
 		};
@@ -1140,7 +1140,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "FlowAllocator (iOS)";
+				TEST_TARGET_NAME = "Flow Allocator (iOS)";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1164,7 +1164,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "FlowAllocator (macOS)";
+				TEST_TARGET_NAME = "Flow Allocator (macOS)";
 			};
 			name = Debug;
 		};
@@ -1187,14 +1187,14 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "FlowAllocator (macOS)";
+				TEST_TARGET_NAME = "Flow Allocator (macOS)";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		407A16F1261F91E00020B4FC /* Build configuration list for PBXProject "FlowAllocatorApp" */ = {
+		407A16F1261F91E00020B4FC /* Build configuration list for PBXProject "Flow Allocator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				407A1725261F91E10020B4FC /* Debug */,
@@ -1203,7 +1203,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		407A1727261F91E10020B4FC /* Build configuration list for PBXNativeTarget "FlowAllocatorApp (iOS)" */ = {
+		407A1727261F91E10020B4FC /* Build configuration list for PBXNativeTarget "Flow Allocator (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				407A1728261F91E10020B4FC /* Debug */,
@@ -1212,7 +1212,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		407A172A261F91E10020B4FC /* Build configuration list for PBXNativeTarget "FlowAllocatorApp (macOS)" */ = {
+		407A172A261F91E10020B4FC /* Build configuration list for PBXNativeTarget "Flow Allocator (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				407A172B261F91E10020B4FC /* Debug */,
