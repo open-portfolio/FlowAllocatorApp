@@ -107,8 +107,7 @@ struct RebalanceSalesTable: View {
 
     private func getSaleWashAmount(_ sale: Sale) -> Double {
         sale.getWashAmount(recentPurchasesMap: ax.recentPurchasesMap,
-                           securityMap: ax.securityMap,
-                           trackerSecuritiesMap: ax.trackerSecuritiesMap)
+                           securityMap: ax.securityMap)
     }
 
     private var accountKey: AccountKey {

@@ -42,7 +42,7 @@ struct AllocatDocument {
         .allocSecurity,
         .allocTransaction,
         .allocCap,
-        .allocTracker,
+//        .allocTracker,
     ]
 
     init() {

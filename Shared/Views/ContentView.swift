@@ -32,7 +32,7 @@ let baseModelEntities: [SidebarMenuIDs] = [
     .modelHoldings,
     .modelSecurities,
     .modelStrategies,
-    .modelTrackers,
+//    .modelTrackers,
     .modelTxns,
 ]
 

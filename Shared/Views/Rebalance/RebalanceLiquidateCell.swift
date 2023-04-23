@@ -66,8 +66,7 @@ struct RebalanceLiquidateCell: View {
 
     private var saleWashAmount: Double {
         sale.getWashAmount(recentPurchasesMap: ax.recentPurchasesMap,
-                           securityMap: ax.securityMap,
-                           trackerSecuritiesMap: ax.trackerSecuritiesMap)
+                           securityMap: ax.securityMap)
     }
 
     // NOTE what about sale washes that are byproduct of from today's purchases?
